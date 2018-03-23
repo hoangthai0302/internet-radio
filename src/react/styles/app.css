@@ -1,0 +1,17 @@
+.flex-container {
+    display: flex;
+    align-items: start;
+}
+
+.flex-container__col-right {
+    flex-grow: 1;
+}
+
+.flex-container__col-left {
+    margin-right: 55px;
+}
+
+.list-group-container {
+    max-height: 400px;
+    overflow: auto;
+}

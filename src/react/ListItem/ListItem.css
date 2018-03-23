@@ -1,0 +1,22 @@
+.list-item a {
+    text-decoration: none;
+    padding: 1.5em 1em;
+    display: block;
+    font-size: 1em;
+    color: inherit;
+    cursor: default;
+}
+
+.list-item{
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+}
+
+.list-item--active {
+    font-weight: bold
+}
+
+.list-item:first-child {
+    border-top:1px solid #ccc;
+}
