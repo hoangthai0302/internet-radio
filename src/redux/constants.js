@@ -3,13 +3,14 @@ export const API_URL = 'https://cors-anywhere.herokuapp.com/http://api.shoutcast
 export const API_KEY = 'um1mieaWqhc48cf9';
 
 export const ActionTypes = {
-    GET_GENRES_SUCCESS: 'LOAD_GENRES_SUCCESS',
-    GET_STATIONS_SUCCESS:'GET_STATIONS_SUCCESS',
-    LOAD_CATEGORIES_SUCCESS: 'LOAD_CATEGORIES_SUCCESS',
+    RECEIVED_GENRES: 'RECEIVED_GENRES',
+    SELECT_GENRE:'SELECT_GENRE',
 
-    RECEIVED_DATA_LIST_GROUP: 'RECEIVED_DATA_LIST_GROUP',
+    
+    SELECT_STATION:'SELECT_STATION',
+    RECEIVED_STATIONS:'RECEIVED_STATIONS',
 
-    SIDE_BAR_ITEM_SELECTED: 'SIDE_BAR_ITEM_SELECTED'
+    SELECT_SIDEBAR_ITEM: 'SELECT_SIDEBAR_ITEM'
 }
 
 export const ItemTypes = {
@@ -20,7 +21,10 @@ export const ItemTypes = {
     SECONDARY_GENRE:'SECONDARY_GENRE',
 }
 
-export const ScreenIDs = {
-    LIST_GENRE: 'LIST_GENRE',
-    LIST_STATION: 'LIST_STATION',
+export const SidebarItems = {
+    RECENT: 'RECENT',
+    FAVOURITE: 'FAVOURITE',
+    CATEGORY:'CATEGORY',
+    COUNTRY:'COUNTRY',
+    SEARCH:'SEARCH'
 }

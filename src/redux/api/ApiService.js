@@ -2,14 +2,14 @@ import { API_URL, API_KEY }  from '../constants'
 
 class ApiService {
 
-    async getPrimaryGenres(){
+    async fetchPrimaryGenres(){
         const genres = await fetch(API_URL + '/genre/primary' + '?k=' + API_KEY + '&f=json');
         let data = await genres.json();
         data = data.response.data.genrelist.genre;
         return data;
     }
 
-    async getSecondaryGenres(genreId){
+    async fetchSecondaryGenres(genreId){
         let res = await fetch(API_URL + '/genre/secondary' + '?parentid=' + genreId + '&k=' + API_KEY + '&f=json');
         res = await res.json();
         const data = res.response.data.genrelist.genre;
@@ -18,7 +18,7 @@ class ApiService {
 
     async getStationsByGenre(genreId) {
 
-        let res = await fetch(API_URL + '/station/advancedsearch?genre_id=' + genreId + '?k=' + API_KEY + '&f=json');
+        let res = await fetch(API_URL + '/station/advancedsearch?genre_id=' + genreId + '&k=' + API_KEY + '&f=json');
         res = await res.json();
         const stations = res.response.data.stationlist.station;
         return stations;

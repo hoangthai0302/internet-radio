@@ -1,9 +1,11 @@
 
 
 import React from 'react'
-import SidebarContainer from '../redux/components/sidebar/SidebarContainer'
-import Main from '../redux/components/Main/Main'
+import Sidebar from '../redux/components/Sidebar'
+import MainContent from '../redux/components/MainContent'
+import Player from '../redux/components/Player'
 import './styles/app.css'
+
 
 
 export default class App extends React.Component {
@@ -16,10 +18,11 @@ export default class App extends React.Component {
       <div className="flex-container">
         <div className="flex-container__col-left">
           <h3>&nbsp;</h3>
-          <SidebarContainer />
+          <Sidebar />
         </div>
         <div className="flex-container__col-right">
-          <Main />
+          <MainContent />
+          <Player />
         </div>
 
       </div>

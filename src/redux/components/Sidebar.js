@@ -3,22 +3,24 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { getPrimaryGenres }  from './SidebarActions'
+import { onSidebarItemClick }  from '../core/sidebarActions'
+import  { fetchPrimaryGenres } from '../core/genreActions'
 import {v4} from 'uuid'
-import ListItem from '../../../react/ListItem/ListItem'
+import ListItem from '../../react/ListItem/ListItem'
+import { SidebarItems } from '../constants'
 
 const defaultProps = {
   data: [
-      { name:'RECENT', iconLeft:'fa fa-clock-o', active: false},
-      { name:'FAVORITES', iconLeft:'fa fa-star-o', active: true},
-      { name:'CATEGORY', iconLeft:'fa fa-list-ul', active: false},
-      { name:'COUNTRY', iconLeft:'fa fa-globe', active: false},
-      { name:'SEARCH', iconLeft:'fa fa-search', active: false}
+      { name:SidebarItems.RECENT, iconLeft:'fa fa-clock-o', active: false},
+      { name:SidebarItems.FAVOURITE, iconLeft:'fa fa-star-o', active: true},
+      { name:SidebarItems.CATEGORY, iconLeft:'fa fa-list-ul', active: false},
+      { name:SidebarItems.COUNTRY, iconLeft:'fa fa-globe', active: false},
+      { name:SidebarItems.SEARCH, iconLeft:'fa fa-search', active: false}
   ]
 };
 
 
-class SidebarContainer extends React.Component {
+class Sidebar extends React.Component {
   constructor(){
     super();
     this.onItemClick = this.onItemClick.bind(this);
@@ -28,10 +30,7 @@ class SidebarContainer extends React.Component {
   }
 
   onItemClick(item){
-    if(item.name == 'CATEGORY'){
-      this.props.getPrimaryGenres()
-    }
-
+    this.props.onSidebarItemClick(item);
     for(let item of this.props.data){
       item.active = false;
     }
@@ -59,11 +58,11 @@ class SidebarContainer extends React.Component {
   }
 }
 
-SidebarContainer.defaultProps = defaultProps;
+Sidebar.defaultProps = defaultProps;
 
 export default withRouter(connect(
   null,
-  {getPrimaryGenres}
-)(SidebarContainer))
+  {onSidebarItemClick,  fetchPrimaryGenres}
+)(Sidebar))
 
 
