@@ -5,6 +5,8 @@ import genresReducer from './core/genresReducer'
 import stationReducer from './core/stationReducer'
 import stationsReducer from './core/stationsReducer'
 import playerReducer from './core/playerReducer'
+import dirReducer from './core/dirReducer'
+import dirsReducer from './core/dirsReducer'
 
 export default combineReducers({
   sidebar_item:sidebarReducer,
@@ -12,6 +14,8 @@ export default combineReducers({
   genres:genresReducer,
   station:stationReducer,
   stations:stationsReducer,
-  player:playerReducer
+  player:playerReducer,
+  dir:dirReducer,
+  dirs:dirsReducer
 })
 

@@ -20,7 +20,7 @@ export default class App extends React.Component {
           <h3>&nbsp;</h3>
           <Sidebar />
         </div>
-        <div className="flex-container__col-right">
+        <div id="container" className="flex-container__col-right">
           <MainContent />
           <Player />
         </div>

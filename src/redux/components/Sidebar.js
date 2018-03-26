@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { onSidebarItemClick }  from '../core/sidebarActions'
-import  { fetchPrimaryGenres } from '../core/genreActions'
+import  { fetchGenres } from '../core/genreActions'
 import {v4} from 'uuid'
 import ListItem from '../../react/ListItem/ListItem'
 import { SidebarItems } from '../constants'
@@ -62,7 +62,7 @@ Sidebar.defaultProps = defaultProps;
 
 export default withRouter(connect(
   null,
-  {onSidebarItemClick,  fetchPrimaryGenres}
+  {onSidebarItemClick,  fetchGenres}
 )(Sidebar))
 
 

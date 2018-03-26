@@ -12,6 +12,11 @@ const playerReducer = (state = initialState, action) => {
                 ...state,
                 playing:action.data
             }
+        case ActionTypes.PLAY_STREAM:
+            return {
+                ...state,
+                streamUrl:action.data
+            }
         default:
             return state
     }

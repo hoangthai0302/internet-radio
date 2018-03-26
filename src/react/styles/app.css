@@ -9,6 +9,8 @@
 
 .flex-container__col-left {
     margin-right: 55px;
+    width:200px;
+    height:500px
 }
 
 .list-group-container {
