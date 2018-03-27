@@ -1,17 +1,40 @@
-import { API_URL, API_KEY }  from '../constants'
+import { API_URL, API_KEY, SEARCH_URL }  from '../constants'
+import LocalStorageService from '../../utils/LocalStorageService'
 
 class ApiService {
 
-    // async fetchGenres(){
-    //     const genres = await fetch(API_URL + 'GenreLevelTwo');
-    //     let text = await genres.text();
-    //     console.log(text)
-    //     let patt = new RegExp(`(?<=<Title>)(.*)(?=</Title>)`,"g")
-    //     let match = text.match(patt);
-    //     console.log(match);
-    //     debugger; 
-    //     return match;
-    // }
+    async search(q){
+        let res = await fetch(SEARCH_URL + q);
+        let text = await res.text();
+        let parser = new DOMParser();
+        let xmlDoc = parser.parseFromString(text,'text/xml');
+        let items = xmlDoc.getElementsByTagName("Item");
+
+        let stations = [];
+        for(let i = 1; i < items.length; i++){
+            let item = items[i];
+
+            let id = item.children[1].innerHTML;
+            let name = item.children[2].innerHTML;
+            let url = item.children[3].innerHTML;
+            url = url.replace('&amp;','1&');
+            let description = item.children[4].innerHTML;
+            let logo = item.children[5].innerHTML;
+            if(name && url){
+
+                stations.push({
+                    id,
+                    name,
+                    url,
+                    description,
+                    logo
+                })
+            }
+
+        }
+
+        return stations;
+    }
 
     async fetchGenreDirs(genreName){
         let res = await fetch(API_URL + '/GenreLevelThree-' + genreName);
@@ -73,14 +96,14 @@ class ApiService {
         return stations;
     }
 
-    async getStationsByGenre(genreId) {
+    // async getStationsByGenre(genreId) {
 
-        let res = await fetch(API_URL + '/station/advancedsearch?genre_id=' + genreId + '&k=' + API_KEY + '&f=json&limit=5,10');
-        res = await res.json();
+    //     let res = await fetch(API_URL + '/station/advancedsearch?genre_id=' + genreId + '&k=' + API_KEY + '&f=json&limit=5,10');
+    //     res = await res.json();
 
-        const stations = res.response.data.stationlist.station;
-        return stations;
-    }
+    //     const stations = res.response.data.stationlist.station;
+    //     return stations;
+    // }
 
 
     async fetchStationStreamUrl(stationUrl){
@@ -104,8 +127,6 @@ class ApiService {
         res = await res.json();
        return res.url;
     }
-
-
 
 }
 

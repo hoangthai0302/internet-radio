@@ -10,9 +10,7 @@ export const selectGenre = (data) => ({
 
 export const onGenreItemClick = (genre) => dispatch => {
     dispatch(selectGenre(genre));
-    DialogService.showLoading('container')
     fetchGenreDirs(genre)(dispatch);
-    
 }
 
 export const fetchGenres  = () => async dispatch => {

@@ -20,6 +20,9 @@
 .station-item:first-child {
     border-top:1px solid #ccc;
 }
+.station-item i {
+    margin-left: auto;
+}
 
 .station-item__img{
     width: 36px;

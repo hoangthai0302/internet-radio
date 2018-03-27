@@ -15,8 +15,6 @@ export const fetchGenreDirs = (genreName) => async dispatch => {
     let dirs = await ApiService.fetchGenreDirs(genreName);
     
     dispatch(receiveDirs(dirs));
-    DialogService.hideLoading();
-   
 }
 
 export const selectDir = (dir) => ({

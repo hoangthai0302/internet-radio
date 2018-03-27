@@ -1,20 +1,22 @@
 //export const API_URL = "https://cors-anywhere.herokuapp.com/http://humax.vtuner.com/setupapp/humax/asp/browsexml/navXML.asp?gofile=GenreLevelThree-";
 export const API_URL = 'https://cors-anywhere.herokuapp.com/http://humax.vtuner.com/setupapp/humax/asp/browsexml/navXML.asp?gofile=';
 export const API_KEY = 'um1mieaWqhc48cf9';
+export const SEARCH_URL = 'https://cors-anywhere.herokuapp.com/http://humax.vtuner.com/setupapp/Company/asp/browsexpa/search.asp?sSearchtype=2&search=';
 
 export const ActionTypes = {
     RECEIVED_GENRES: 'RECEIVED_GENRES',
-    RECEIVED_DIRS:'RECEIVED_DIRS',
     SELECT_GENRE:'SELECT_GENRE',
+    RECEIVED_DIRS:'RECEIVED_DIRS',
     SELECT_DIR:'SELECT_DIR',
 
     
     SELECT_STATION:'SELECT_STATION',
     RECEIVED_STATIONS:'RECEIVED_STATIONS',
+    ADD_TO_RECENT:'ADD_TO_RECENT',
+    PLAY_STREAM:'PLAY_STREAM',
 
     SELECT_SIDEBAR_ITEM: 'SELECT_SIDEBAR_ITEM',
 
-    PLAY_STREAM:'PLAY_STREAM',
 
     SHOW_LOADING:'SHOW_LOADING',
     HIDE_LOADING:'HIDE_LOADING'
@@ -30,7 +32,7 @@ export const ItemTypes = {
 
 export const SidebarItems = {
     RECENT: 'RECENT',
-    FAVOURITE: 'FAVOURITE',
+    FAVOURITE: 'FAVORITES',
     CATEGORY:'CATEGORY',
     COUNTRY:'COUNTRY',
     SEARCH:'SEARCH'
