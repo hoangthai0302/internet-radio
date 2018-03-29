@@ -6,7 +6,7 @@ import {v4} from 'uuid'
 
 import { ItemTypes, SidebarItems, GENRES} from '../constants'
 import LocalStorageService from '../../utils/LocalStorageService'
-import StationItem from '../../react/StationItem/StationItem'
+import StationItemContainer from './StationItemContainer'
 import ApiService from '../api/ApiService';
 
 import { onStationItemClick } from '../core/stationActions'
@@ -32,21 +32,11 @@ class Search extends React.Component {
             this.setState({stations});
         }
 
-        let onFavouriteClick = (station) => {
-            LocalStorageService.toggleFavourite(station);
-            this.setState({});
-        }
-
         const listStations = this.state.stations.map((item) =>{
-            let isFavourite = LocalStorageService.isFavourite(item.id);
             return (
-                <StationItem 
+                <StationItemContainer 
                     key = {v4()}
-                    name = {item.name}
-                    logo = {item.logo || ''}
-                    onClick = { ()=>{ this.props.onStationItemClick(item) } }
-                    onFavouriteClick = { ()=> { onFavouriteClick(item) }}
-                    active = { isFavourite }
+                    item = {item}
                 />
             )
         })

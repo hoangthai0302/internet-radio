@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import {v4} from 'uuid'
 
-import StationItem from '../../react/StationItem/StationItem'
+import StationItemContainer from './StationItemContainer'
 import BackButton from '../../react/BackButton/BackButton'
 import { onStationItemClick } from '../core/stationActions'
 import LocalStorageService from '../../utils/LocalStorageService'
@@ -18,21 +18,11 @@ class Favourite extends React.Component {
     render() {
         const favouriteStations = LocalStorageService.getFavouriteStations();
 
-        let onFavouriteClick = (station) => {
-            LocalStorageService.toggleFavourite(station);
-            this.setState({});
-        }
-
         const listStations = favouriteStations.map((item) =>{
-            let isFavourite = LocalStorageService.isFavourite(item.id);
             return (
-                <StationItem 
+                <StationItemContainer 
                     key = {v4()}
-                    name = {item.name}
-                    logo = {item.logo || ''}
-                    onClick = { ()=>{ this.props.onStationItemClick(item) } }
-                    onFavouriteClick = { ()=> { onFavouriteClick(item) }}
-                    active = { isFavourite }
+                    item = {item}
                 />
             )
         })

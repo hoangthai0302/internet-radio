@@ -2,7 +2,7 @@ import { ActionTypes } from '../constants'
 
 const initialState = {
     playing: false,
-    streamUrl:null
+    station:null
 }
 
 const playerReducer = (state = initialState, action) => {
@@ -12,10 +12,10 @@ const playerReducer = (state = initialState, action) => {
                 ...state,
                 playing:action.data
             }
-        case ActionTypes.PLAY_STREAM:
+        case ActionTypes.PLAY_STATION:
             return {
                 ...state,
-                streamUrl:action.data
+                station:action.data
             }
         default:
             return state

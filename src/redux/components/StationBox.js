@@ -4,10 +4,10 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import {v4} from 'uuid'
 
-import StationItem from '../../react/StationItem/StationItem'
 import BackButton from '../../react/BackButton/BackButton'
 import { onStationItemClick } from '../core/stationActions'
 import LocalStorageService from '../../utils/LocalStorageService';
+import StationItemContainer from './StationItemContainer'
 
 class DirBox extends React.Component {
 
@@ -19,21 +19,12 @@ class DirBox extends React.Component {
         let currentDir = this.props.match.params.dir;
         let currentGenre = this.props.match.params.genre;
 
-        let onFavouriteClick = (station) => {
-            LocalStorageService.toggleFavourite(station);
-            this.setState({});
-        }
-
+      
         const listStations = this.props.stations.map((item) =>{
-            let isFavourite = LocalStorageService.isFavourite(item.id);
             return (
-                <StationItem 
+                <StationItemContainer 
                     key = {v4()}
-                    name = {item.name}
-                    logo = {item.logo || ''}
-                    onClick = { ()=>{ this.props.onStationItemClick(item) } }
-                    onFavouriteClick = { ()=> { onFavouriteClick(item) }}
-                    active = { isFavourite }
+                    item = {item}
                 />
             )
         })

@@ -4,7 +4,7 @@ const initialState = null
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case ActionTypes.SELECT_STATION:
+        case ActionTypes.PLAY_STATION:
             return action.data
             
         default:

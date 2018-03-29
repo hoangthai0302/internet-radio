@@ -7,3 +7,7 @@ export const playStream = (streamUrl) => ({
     data: streamUrl
 })
 
+export const play = (station) => ({
+    type: ActionTypes.PLAY_STATION, 
+    data:station
+})

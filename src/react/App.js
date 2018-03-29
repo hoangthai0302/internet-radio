@@ -31,9 +31,11 @@ export default class App extends React.Component {
           <Route exact path="/category/:genre" component={DirBox}/>
           <Route exact path="/category/:genre/:dir" component={StationBox}/>
           <Route exact path="/search" component={Search}/>
-          <Player />
         </div>
+          <Player />
+        <div>
 
+        </div>
       </div>
     )
   }

@@ -1,13 +1,14 @@
 
 import {ActionTypes, ItemTypes} from '../constants'
 import ApiService from '../api/ApiService'
-import { playStream } from './playerActions'
+import { playStream, play } from './playerActions'
 import LocalStorageService from '../../utils/LocalStorageService'
 
 
 export const onStationItemClick = (station) => async dispatch => {
     let streamUrl = await ApiService.fetchStationStreamUrl(station.url);
-    dispatch(playStream(streamUrl));
+    station.streamUrl = streamUrl;
+    dispatch(play(station));
     LocalStorageService.saveToRecent(station);
 }
 
